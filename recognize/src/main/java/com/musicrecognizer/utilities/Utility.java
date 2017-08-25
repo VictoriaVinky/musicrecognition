@@ -51,8 +51,8 @@ public class Utility {
         mediaFile.album = metadata.get(XMPDM.ALBUM);
         mediaFile.albumArtist = metadata.get(XMPDM.ALBUM_ARTIST);
         mediaFile.genre = metadata.get(XMPDM.GENRE);
-        mediaFile.track = metadata.get(XMPDM.TRACK_NUMBER);
-        mediaFile.year = metadata.get(XMPDM.RELEASE_DATE);
+        mediaFile.trackNumber = metadata.get(XMPDM.TRACK_NUMBER);
+        mediaFile.releaseDate = metadata.get(XMPDM.RELEASE_DATE);
 
         return mediaFile;
     }

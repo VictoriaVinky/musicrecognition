@@ -13,7 +13,7 @@ import org.apache.tika.exception.TikaException;
 import org.xml.sax.SAXException;
 
 import com.musicrecognizer.data.MediaFile;
-import com.musicrecognizer.utilities.AudioFingerPrintExtractor;
+import com.musicrecognizer.utilities.AudioFingerprintExtractor;
 import com.musicrecognizer.utilities.Constants;
 import com.musicrecognizer.utilities.Utility;
 
@@ -87,9 +87,9 @@ public class TrainingDB {
             short[] samples = new short[2048];
             randomAccessFile.readFully(raw);
             ByteBuffer.wrap(raw).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer().get(samples);
-            currentEnergy = AudioFingerPrintExtractor.getIntance().computeEnergyForAllBand(samples);
+            currentEnergy = AudioFingerprintExtractor.getIntance().computeEnergyForAllBand(samples);
             if (preEnergy != null) {
-                String fingerprint = AudioFingerPrintExtractor.getIntance().extract(preEnergy, currentEnergy);
+                String fingerprint = AudioFingerprintExtractor.getIntance().extract(preEnergy, currentEnergy);
                 outStream.println(fingerprint);
             }
             preEnergy = currentEnergy;

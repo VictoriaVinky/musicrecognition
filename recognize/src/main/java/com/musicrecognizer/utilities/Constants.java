@@ -25,4 +25,8 @@ public interface Constants {
     public static final int CHANNEL_COUNT = 1;
 
     public static final int SAMPLE_RATE = 5512;
+
+    public static final int RESPONSE_STATUS_CODE_CONTINUE = 100;
+    public static final int RESPONSE_STATUS_CODE_SUCCESS = 200;
+    public static final int RESPONSE_STATUS_CODE_NOT_FOUND = 404;
 }

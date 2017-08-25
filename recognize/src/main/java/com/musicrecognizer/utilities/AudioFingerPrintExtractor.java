@@ -4,7 +4,7 @@ package com.musicrecognizer.utilities;
 import com.musicrecognizer.audio.FFTWrapper;
 import com.musicrecognizer.audio.Windows;
 
-public class AudioFingerPrintExtractor {
+public class AudioFingerprintExtractor {
     @SuppressWarnings("unused")
     private static final int SHIFT_FRAME_STEP = 64;
     private static final int FFT_SIZE = 2048;
@@ -24,16 +24,16 @@ public class AudioFingerPrintExtractor {
             638, 677, 717, 760
     };
 
-    private static AudioFingerPrintExtractor sIntance;
+    private static AudioFingerprintExtractor sIntance;
 
-    public static AudioFingerPrintExtractor getIntance() {
+    public static AudioFingerprintExtractor getIntance() {
         if (sIntance == null) {
-            sIntance = new AudioFingerPrintExtractor();
+            sIntance = new AudioFingerprintExtractor();
         }
         return sIntance;
     }
 
-    public AudioFingerPrintExtractor() {
+    public AudioFingerprintExtractor() {
         mTransformer = new FFTWrapper(FFT_SIZE);
         mWindow = Windows.getWindowsCoef(FFT_SIZE, Windows.TYPE.HAMMING);
     }

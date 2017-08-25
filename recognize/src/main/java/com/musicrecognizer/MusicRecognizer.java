@@ -3,13 +3,13 @@ package com.musicrecognizer;
 
 import java.io.File;
 
-import com.musicrecognizer.utilities.AudioFingerPrintExtractor;
+import com.musicrecognizer.utilities.AudioFingerprintExtractor;
 import com.musicrecognizer.utilities.Constants;
 
 public class MusicRecognizer {
     private static MusicRecognizer sIntance;
     private double[] mCurrentEnergy, mPreEnergy;
-    private AudioFingerPrintExtractor mAudioFingerPrintExtractor;
+    private AudioFingerprintExtractor mAudioFingerPrintExtractor;
 
     public static MusicRecognizer getInstance() {
         if (sIntance == null) {
@@ -21,7 +21,7 @@ public class MusicRecognizer {
     public MusicRecognizer() {
         new File(Constants.TEMP_FOLDER).mkdir();
         new File(Constants.AUDIO_FINGERPRINT_FOLDER).mkdir();
-        mAudioFingerPrintExtractor = new AudioFingerPrintExtractor();
+        mAudioFingerPrintExtractor = new AudioFingerprintExtractor();
     }
 
     /**
