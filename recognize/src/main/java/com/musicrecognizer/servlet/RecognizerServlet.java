@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,10 +24,9 @@ import com.musicrecognizer.data.MetadataResponse;
 import com.musicrecognizer.utilities.AudioFingerprintExtractor;
 import com.musicrecognizer.utilities.Constants;
 
-/**
- * @author Victoria Vinky
- *
- */
+@WebServlet(urlPatterns = {
+        "/recognize"
+})
 public class RecognizerServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -38,7 +39,10 @@ public class RecognizerServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/jsps/version.jsp");
+        dispatcher.forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -150,6 +154,7 @@ public class RecognizerServlet extends HttpServlet {
         mCurrentEnergy = AudioFingerprintExtractor.getIntance().computeEnergyForAllBand(samples);
         if (mPreEnergy != null) {
             fingerprint = AudioFingerprintExtractor.getIntance().extract(mPreEnergy, mCurrentEnergy);
+            System.out.println("fingerprint: " + fingerprint);
             mFingerprints.add(fingerprint);
         }
         mPreEnergy = mCurrentEnergy;
